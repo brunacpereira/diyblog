@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>All blogs</h1>
+  {% if blog_list %}
+  <ul class="list-group list-group-flush">
+    {% for blog in blog_list %}
+      <li class="list-group-item ">
+        <a class="link-offset-2 link-underline link-underline-opacity-0 text-info-emphasis" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.date_of_post}})- 
+        <a class="link-offset-2 link-underline link-underline-opacity-0 text-info-emphasis" href="{% url 'blogger-detail' blog.blogger.id %}"> {{blog.blogger}} </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no blog.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% load bootstrap %} 
+
+{% block content %}
+<div class="container">
+  <h1>{{ blogger.first_name }} {{ blogger.last_name }}</h1>
+  <br>
+    <form action="" method="post">
+      {% csrf_token %}
+      <table>
+      {% comment %} {{ form.as_table }} {% endcomment %}
+      {{ form|bootstrap }}
+      </table>
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %} 
+

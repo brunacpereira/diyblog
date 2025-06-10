@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+       
+  <br>
+  
+    <article class="blog-post">
+
+      <h2 class="display-5 link-body-emphasis mb-1">Blog: {{ blog.title }}</h2>
+     
+      {% if user.username == blog.blogger.user.username or user.groups.all.0.name == "Admin" %} 
+        <ul> 
+          <li style="display: inline;"><a href="{% url 'blog_update' blog.id %}"><i class="fa fa-pencil text-info-emphasis" aria-hidden="true"></i></a></li>
+          <li style="display: inline;"><a href="{% url 'blog_delete' blog.id %}"><i class="fa fa-trash text-info-emphasis" aria-hidden="true"></i></a></li>
+        </ul>
+      {% endif %} 
+
+      <p class="blog-post-meta">{{ blog.date_of_post }} by <a class="text-info-emphasis"  href="{% url 'blogger-detail' blog.blogger.id %}">{{blog.blogger}}</a></p>
+  
+      <p>{{ blog.description }}</p>
+      
+      <hr>          
+    </article> 
+    
+<h3>Comments</h3>  
+
+    <ul>       
+      {% for item in blog.comment_set.all %}    
+      <li class="list-group-item"><p> {{item.user}} ({{item.date}}) - {{item.description}} </p></li>
+      {% endfor %}
+    </ul>
+
+    <button type="button" class="btn btn-outline-secondary border-dark-subtle me-2">
+      <a class="page-link" href="{% url 'new-comment-blog' blog.id %}">Add a new comment</a>   
+    </button>
+  
+{% endblock %}
+
+
+

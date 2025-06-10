@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}  
+ 
+  <br> 
+  <h2 class="display-5 link-body-emphasis mb-1"> Blogger: {{blogger.first_name}} {{blogger.last_name}} </h2>
+  <br>
+  <h3> Bio </h3>
+  <p> {{blogger.bio}}</p>
+  <br> 
+       
+  {% if user.username == blog.blogger.user.username or user.groups.all.0.name == "Admin" %} 
+  <ul> 
+    <li style="display: inline;"><a href="{% url 'blogger_update' blogger.id %}"><i class="fa fa-pencil text-info-emphasis" aria-hidden="true"></i></a></li>
+    <li style="display: inline;"><a href="{% url 'blogger_delete' blogger.id %}"><i class="fa fa-trash text-info-emphasis" aria-hidden="true"></i></a></li>
+  </ul>
+  {% endif %} 
+
+  <h3>Blogs list</h3>
+  <div style="margin-left:20px;margin-top:20px">
+    <ul class="list-group list-group-flush">
+        {% for post in blogger.blog_set.all %} 
+        <li class="list-group-item">
+            <a class="text-info-emphasis link-underline  link-underline-opacity-0" href="{{ post.get_absolute_url }}">{{post.title}}</a> ({{post.date_of_post}})
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
+
+

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block title %}<title>KnowledgeByte</title>{% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- Add additional CSS in static file -->
+     {% load static %}
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Personalizar cor da barra de endereços do site -->
+    <meta name="theme-color" content="#712cf9">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
+    
+</head>
+<body>
+      
+        <div class="container">
+          <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0 border-bottom">
+            <div class="col-md-3 mb-0 mb-md-0">
+              <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">            
+                  <span class="fs-4">KnowledgeByte</span>
+              </a>
+            </div>
+            <ul class="nav nav-underline col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="{% url 'index' %}" class="nav-link px-2 link-secondary">Home</a></li>
+              <li><a href="{% url 'blogs' %}" class="nav-link px-2 link-dark">All blogs</a></li>
+              <li><a href="{% url 'bloggers' %}" class="nav-link px-2 link-dark">All bloggers</a></li>
+            </ul>
+            <div class="col-md-3 text-end">
+              {% if user.is_authenticated %}
+              <span class="d-inline-flex link-body-emphasis text-decoration-none me-3">Hi, {{ user.get_username }}!</span>
+              <form id="logout-form" class="d-inline-flex link-body-emphasis" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                  <button type="submit" class="btn btn-light">Logout</button>
+              </form>
+              {% else %}
+              <button type="button" class="btn btn-outline-secondary border-dark-subtle me-2"><a class="page-link" href="{% url 'login'%}?next={{request.path}}">Login</a></button>
+              <button type="button" class="btn btn-light">Sign-up</button>
+              {% endif %}
+            </div>
+          </header>
+
+          {% if user.is_authenticated %}
+          <div class="nav-scroller bg-opacity-10 ">
+            <nav class="nav nav-underline bg-danger-subtle col-12 col-md-auto mb-2 justify-content-center mb-md-0 shadow-lg" aria-label="Secondary navigation">              
+              <a class="nav-link link-dark link-body-emphasis" href="{% url 'blog_create' %}">Create blog</a>
+              <a class="nav-link link-dark link-body-emphasis" href="{% url 'blogger_create' %}">Create blogger</a>
+            </nav>
+          </div>  
+          {% endif %}
+
+          <div class="grid text-center my-sm-5 overflow-auto">{% block content %}{% endblock %}
+
+            {% block pagination %}
+            {% if is_paginated %}
+                <div class="pagination justify-content-center my-sm-5">
+                  <span class="page-links vermelho">
+                      {% if page_obj.has_previous %}
+                      <a class="text-info-emphasis link-underline link-underline-opacity-0 fw-medium" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                      {% endif %}
+                      <span class="page-current fw-medium">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                      </span>
+                      {% if page_obj.has_next %}
+                      <a class="text-info-emphasis link-underline link-underline-opacity-0 fw-medium" href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                      {% endif %}
+                  </span>
+                </div> 
+             
+            {% endif %}
+            {% endblock %}
+          </div>             
+        </div>     
+      
+</body>
+</html>
