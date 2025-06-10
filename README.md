@@ -9,9 +9,9 @@ O projeto tem como objetivo a criação de um blog que permita que os usuários 
 
 ### Interface Principal
 <br/>
-<div style="display: inline_block"><br>  
+
 ![image](https://github.com/user-attachments/assets/5a44edfc-7ab1-4976-a5aa-c86629450f5c)
-</div>
+
 
  ##
 
