@@ -1,15 +1,19 @@
 ## KnowledgeByte Blog
-
+<div style="display: inline_block"><br>  
 O projeto tem como objetivo a criação de um blog que permita que os usuários crie, edite, consulte e delete posts de acordo com os permissionamentos.
 <br>
+</div>
 
----------------------------------------------------------------------------------------------------------------------
+ ##
+
 
 ### Interface Principal
 <br/>
+<div style="display: inline_block"><br>  
 ![image](https://github.com/user-attachments/assets/5a44edfc-7ab1-4976-a5aa-c86629450f5c)
+</div>
 
-----------------------------------------------------------------------------------------------------------------------
+ ##
 
 ### Tecnologias utilizadas
 
