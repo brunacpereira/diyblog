@@ -1,5 +1,4 @@
 ## KnowledgeByte Blog
-<br>
 
 O projeto tem como objetivo a criação de um blog que permita que os usuários crie, edite, consulte e delete posts de acordo com os permissionamentos.
 <br>
