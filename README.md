@@ -7,6 +7,7 @@ Interface página All blogs:
 
 ![image](https://github.com/user-attachments/assets/5a44edfc-7ab1-4976-a5aa-c86629450f5c)
 
+##
 
 ## Tecnologias utilizadas
 
