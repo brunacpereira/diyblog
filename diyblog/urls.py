@@ -28,7 +28,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('api/', api.urls),
     path('', RedirectView.as_view(url='/blog/')),
-] 
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
