@@ -22,6 +22,6 @@ urlpatterns = [
     path('blogger/<int:pk>/update/', views.BloggerUpdate.as_view(), name='blogger_update'),
     path('blogger/<int:pk>/delete/', views.BloggerDelete.as_view(), name='blogger_delete'),
     path('admin/', admin.site.urls),
-    path('api/', api.urls), 
+    # path('api/', api.urls), 
 ]
 

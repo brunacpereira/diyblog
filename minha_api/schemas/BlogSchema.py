@@ -9,6 +9,5 @@ class BlogIn(ModelSchema):
         fields = "__all__"
 
 class BlogOut(Schema):
-    blogger: str 
+    title: str  
     description: str 
-    date_of_post: datetime

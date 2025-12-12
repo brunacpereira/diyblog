@@ -80,42 +80,9 @@
             {% endblock %}
           </div>             
         </div>     
-      
+  {% block scripts %}
+  <script src="{% static 'js/blog.js' %}"></script>
+  {% endblock %}
+
 </body>
 </html>
-
-<script>
-
-
-function criarBlog() {
-  console.log('Entrou criarBlog')
-
-  const update = {
-  title: 'Teste',
-  blogger: 'Bruna',
-  description: 'Teste criação blog',
-  };
-
-  const options = {
-  method: 'POST',
-  headers: {
-  'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(update),
-  };
-
-  fetch('/api/blogs/', options)
-  .then(data => {
-      if (!data.ok) {
-        throw Error(data.status);
-       }
-       return data.json();
-      }).then(update => {
-      console.log(update);
-      
-      }).catch(e => {
-      console.log(e);
-      });
-}
-
-</script>

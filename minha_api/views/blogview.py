@@ -1,6 +1,7 @@
 from ninja import NinjaAPI, Router, Query, File, Form
 from blog.models import Blog
 from minha_api.schemas.BlogSchema import BlogIn, BlogOut
+from typing import List
 
 blog_router = Router()
 
@@ -16,3 +17,13 @@ def criar_blog(request, payload: BlogIn):
     )
 
     return blog
+
+@blog_router.get("/", response=List[BlogOut])
+def listar_blogs(request):
+    """
+    Retorna todos os blogs cadastrados na base de dados
+    """
+
+    blogs = Blog.objects.all()
+
+    return blogs
