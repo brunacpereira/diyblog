@@ -1,11 +1,12 @@
 from django.conf.urls import include
-from django.urls import path
+from django.urls import path, include
+from minha_api.api import api
 from blog import views
 from django.views.generic import RedirectView
 # Use static() to add url mapping to serve static files during development (only)
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib import admin
 
 urlpatterns = [  
     path('', views.index, name='index'),  
@@ -20,5 +21,7 @@ urlpatterns = [
     path('blogger/create/', views.BloggerCreate.as_view(), name='blogger_create'),
     path('blogger/<int:pk>/update/', views.BloggerUpdate.as_view(), name='blogger_update'),
     path('blogger/<int:pk>/delete/', views.BloggerDelete.as_view(), name='blogger_delete'),
+    path('admin/', admin.site.urls),
+    path('api/', api.urls), 
 ]
 

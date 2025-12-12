@@ -33,6 +33,7 @@
               <li><a href="{% url 'index' %}" class="nav-link px-2 link-secondary">Home</a></li>
               <li><a href="{% url 'blogs' %}" class="nav-link px-2 link-dark">All blogs</a></li>
               <li><a href="{% url 'bloggers' %}" class="nav-link px-2 link-dark">All bloggers</a></li>
+              <li><button type="button" class="btn btn-light" onclick="criarBlog()">Novo Blog</button></li>
             </ul>
             <div class="col-md-3 text-end">
               {% if user.is_authenticated %}
@@ -82,3 +83,39 @@
       
 </body>
 </html>
+
+<script>
+
+
+function criarBlog() {
+  console.log('Entrou criarBlog')
+
+  const update = {
+  title: 'Teste',
+  blogger: 'Bruna',
+  description: 'Teste criação blog',
+  };
+
+  const options = {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(update),
+  };
+
+  fetch('/api/blogs/', options)
+  .then(data => {
+      if (!data.ok) {
+        throw Error(data.status);
+       }
+       return data.json();
+      }).then(update => {
+      console.log(update);
+      
+      }).catch(e => {
+      console.log(e);
+      });
+}
+
+</script>

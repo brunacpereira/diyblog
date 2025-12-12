@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 from django.apps import AppConfig
-import setuptools.dist
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'bootstrapform',
+    'ninja',
+    'minha_api',
 ]
 
 MIDDLEWARE = [
