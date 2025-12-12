@@ -1,2 +1,10 @@
 venv/
+
+# Ignorar diretórios de dependências (Node.js, Python, etc.)
 node_modules/
+
+# Ignorar arquivo de configuração
+.env
+
+# Ignorar arquivos compilados ou de build
+*.pyc
